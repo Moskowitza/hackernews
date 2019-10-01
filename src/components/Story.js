@@ -9,7 +9,7 @@ import {
 } from "../styles/StoryStyles";
 // import { mapTime } from "../mappers/mapTime";
 
-export const Story = memo(function Story({ storyId }) {
+const Story = memo(function Story({ storyId }) {
   const [story, setStory] = useState({});
 
   useEffect(() => {
