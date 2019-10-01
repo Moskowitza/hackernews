@@ -6,20 +6,25 @@ import {
   GlobalStyle,
   StoriesContainerWrapper
 } from "../styles/StoriesContainerStyles";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const StoriesContainer = () => {
+  const test = useInfiniteScroll();
   const [storyIds, setStoryIds] = useState([]);
   useEffect(() => {
     getStoryIds().then(data => data && setStoryIds(data));
   }, []);
 
   return (
-    <GlobalStyle>
-      <h1>News for N3RDS</h1>
-      {storyIds.map(id => (
-        <Story key={id} storyId={id} />
-      ))}
-    </GlobalStyle>
+    <>
+      <GlobalStyle />
+      <StoriesContainerWrapper data-test-id="stories-container">
+        <h1>News for N3RDS</h1>
+        {storyIds.map(id => (
+          <Story key={id} storyId={id} />
+        ))}
+      </StoriesContainerWrapper>
+    </>
   );
 };
 export default StoriesContainer;

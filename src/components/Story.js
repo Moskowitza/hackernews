@@ -7,7 +7,7 @@ import {
   StoryMeta,
   StoryMetaElement
 } from "../styles/StoryStyles";
-// import { mapTime } from "../mappers/mapTime";
+import mapTime from "../utils/mapTime";
 
 const Story = memo(function Story({ storyId }) {
   const [story, setStory] = useState({});
@@ -27,8 +27,7 @@ const Story = memo(function Story({ storyId }) {
         </span>
         <span data-testid="story-time">
           <StoryMetaElement color="#000">Posted:</StoryMetaElement> {` `}
-          {time}
-          {/* {mapTime(time)} */}
+          {mapTime(time)} ago
         </span>
       </StoryMeta>
     </StoryWrapper>
