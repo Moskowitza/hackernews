@@ -14,9 +14,6 @@ describe("HackerNewsApi", () => {
   });
   describe("getStory functionality", () => {
     it("requests and gets a story from hnapi", async () => {
-      //   axios.get.mockImplementation(() =>
-      //     Promise.resolve({ data: { ...singularStory } })
-      //   );
       axios.get.mockResolvedValue({ data: singularStory });
       const entity = await getStory(1);
       expect(axios.get).toHaveBeenCalledTimes(1);
@@ -31,14 +28,13 @@ describe("HackerNewsApi", () => {
       expect(entity).toEqual(emptySingularStory);
     });
   });
-  describe("get storyIds",() => {
-      it("requests and gets a storyId from hnapi", async () => {
-
-        axios.get.mockResolvedValue({ data: storyId });
-        const entity = await getStory(1);
-        expect(axios.get).toHaveBeenCalledTimes(1);
-        expect(axios.get).toHaveBeenCalledWith(`${storyUrl + 1}.json`);
-        expect(entity).toEqual(singularStory);
-      });
-    };
+  describe("get storyIds", () => {
+    it("requests and gets a storyId from hnapi", async () => {
+      axios.get.mockResolvedValue({ data: storyIds });
+      const entity = await getStoryIds();
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      expect(axios.get).toHaveBeenCalledWith(newStoriesUrl);
+      expect(entity).toEqual(storyIds);
+    });
+  });
 });
