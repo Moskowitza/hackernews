@@ -31,4 +31,14 @@ describe("HackerNewsApi", () => {
       expect(entity).toEqual(emptySingularStory);
     });
   });
+  describe("get storyIds",() => {
+      it("requests and gets a storyId from hnapi", async () => {
+
+        axios.get.mockResolvedValue({ data: storyId });
+        const entity = await getStory(1);
+        expect(axios.get).toHaveBeenCalledTimes(1);
+        expect(axios.get).toHaveBeenCalledWith(`${storyUrl + 1}.json`);
+        expect(entity).toEqual(singularStory);
+      });
+    };
 });
